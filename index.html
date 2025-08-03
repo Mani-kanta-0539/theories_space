@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secrets Behind the Creation of the Universe</title>
+    <style>
+        :root {
+            --bg-main: #171a23;
+            --bg-card: #23263a;
+            --accent: #8fd6ff;
+            --text: #e9e9ee;
+            --soft: #bacce6;
+            --shadow: 0 8px 32px rgba(18,31,53,0.35);
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: var(--bg-main);
+            margin: 0;
+            padding: 0;
+            color: var(--text);
+        }
+        nav {
+            background: #10121a;
+            box-shadow: var(--shadow);
+        }
+        .nav-content {
+            max-width: 960px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 36px;
+        }
+        .nav-logo {
+            font-size: 1.35em;
+            color: var(--accent);
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            margin-left: 28px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Container full width */
+        .container {
+            max-width: 100%;
+            margin: 32px auto 32px auto;
+            background: var(--bg-card);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            padding: 36px;
+        }
+        h1 {
+            text-align: center;
+            color: var(--accent);
+            font-size: 2.2em;
+            margin-top: 16px;
+            margin-bottom: 7px;
+            min-height: 54px;
+            letter-spacing: 0.5px;
+        }
+        .typing {
+            border-right: 2px solid var(--accent);
+            white-space: nowrap;
+            overflow: hidden;
+            width: 100%;
+            animation: typing 2.3s steps(38, end), blink-caret 0.7s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--accent);}
+        }
+        h2 {
+            text-align: center;
+            color: var(--soft);
+            margin-top: 18px;
+        }
+
+        /* --- CREATIVE FULL WIDTH, ALTERNATING THEORIES --- */
+        .theory {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 28px 48px;
+            gap: 30px;
+            margin-bottom: 48px;
+            background: #2a2c40;
+            border-radius: 15px;
+            box-shadow: 0 4px 32px #00000019;
+        }
+        .theory:nth-of-type(1)  { flex-direction: row; }
+        .theory:nth-of-type(2)  { flex-direction: row-reverse; }
+        .theory:nth-of-type(3)  { flex-direction: row; }
+        .theory:nth-of-type(4)  { flex-direction: row-reverse; }
+
+        .theory img {
+            width: 180px;
+            height: 180px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px #5cc0f460;
+            border: 1.5px solid #394045;
+            background: #222;
+            object-fit: cover;
+        }
+        .theory-info {
+            flex: 1;
+            color: var(--text);
+            font-size: 1.1em;
+            line-height: 1.5em;
+        }
+        .theory-info h3 {
+            font-size: 1.65em;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        /* Creative hover effect! */
+        .theory:hover {
+            box-shadow: 0 8px 48px #42aaffaa;
+            background: #354166;
+            transition: 0.3s ease;
+        }
+        /* Responsive */
+        @media (max-width: 900px) {
+            .container { padding: 10px; }
+            .theory { padding: 20px 10px; }
+            .theory img { width: 130px; height: 130px; }
+        }
+        @media (max-width: 700px) {
+            .theory { flex-direction: column !important; gap: 10px; }
+            .theory img { width: 110px; height: 110px; }
+            .theory-info h3 { font-size: 1.35em; }
+        }
+
+        .author {
+            margin: 10px 0 0 0;
+            font-size: 1.04em;
+            color: var(--soft);
+        }
+        .faq {
+            margin-top: 38px;
+        }
+        .faq-item {
+            margin-bottom: 20px;
+            background: #242845;
+            border-radius: 9px;
+            padding: 16px 19px 8px 19px;
+            box-shadow: 0 2px 10px #0c1e2b30;
+        }
+        .question {
+            font-weight: 600;
+            color: var(--accent);
+            cursor: pointer;
+            margin-bottom: 2px;
+        }
+        .answer {
+            color: #d2ecff;
+            margin-top: 8px;
+            transition: max-height 0.3s;
+        }
+        /* Footer */
+        footer {
+            margin-top: 20px;
+            background: #1d2230;
+            color: #bbbbbb;
+            text-align: center;
+            padding: 22px 10px 19px 10px;
+            font-size: 1em;
+            letter-spacing: 0.3px;
+            border-top: 1.5px solid #23263a;
+        }
+    </style>
+</head>
+<body>
+    <!-- Nav bar -->
+    <nav>
+        <div class="nav-content">
+            <div class="nav-logo">Universe Secrets</div>
+            <div class="nav-links">
+                <a href="#theories">Theories</a>
+                <a href="#faq">FAQ</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 id="main-heading"><span class="typing"></span></h1>
+        <h2 id="theories">Theories & Their Authors</h2>
+        <!-- Theory 1: Big Bang Theory -->
+        <div class="theory">
+            <img src="./images/bigbang.jpg" alt="Big Bang Image">
+            <div class="theory-info">
+                <h3>Big Bang Theory</h3>
+                <p>
+                    The universe began as an extremely hot and dense point around 13.8 billion years ago, expanding to form stars, galaxies, and everything we see today.
+                </p>
+                <p class="author"><strong>Author:</strong> Georges Lemaître<br>
+                    Belgian priest, astronomer, and physicist who proposed the theory of the expanding universe. He introduced the "primeval atom" concept, laying the foundation for the Big Bang theory.
+                </p>
+            </div>
+        </div>
+        <!-- Theory 2: Simulation Hypothesis -->
+        <div class="theory">
+            <img src="./images/hypo.jpg" alt="Simulation Image">
+            <div class="theory-info">
+                <h3>Simulation Hypothesis</h3>
+                <p>
+                    This idea says our universe could be an artificial simulation, perhaps like a computer program, created by a much more advanced civilization.
+                </p>
+                <p class="author"><strong>Author:</strong> Nick Bostrom<br>
+                    Swedish philosopher and Oxford professor who published a key paper in 2003 describing the possibility of our universe being a sophisticated computer simulation.
+                </p>
+            </div>
+        </div>
+        <!-- Theory 3: Steady State Theory -->
+        <div class="theory">
+            <img src="./images/stedy.png" alt="Steady State Image">
+            <div class="theory-info">
+                <h3>Steady State Theory</h3>
+                <p>
+                    The Steady State theory claims that the universe has always existed in a constant state, with new matter forming as it expands so it always looks the same.
+                </p>
+                <p class="author"><strong>Authors:</strong> Fred Hoyle, Hermann Bondi, Thomas Gold<br>
+                    Fred Hoyle, an English astronomer, and his colleagues Bondi and Gold developed this theory in 1948, promoting the idea of an eternal and unchanging universe.
+                </p>
+            </div>
+        </div>
+        <!-- Theory 4: Creationism -->
+        <div class="theory">
+            <img src="./images/space.jpg" alt="Creationism Image">
+            <div class="theory-info">
+                <h3>Creationism</h3>
+                <p>
+                    Creationism is the belief that a divine being or higher power created the universe and life according to a specific plan or purpose, rooted in religious traditions.
+                </p>
+                <p class="author"><strong>Author:</strong> Ancient religious texts<br>
+                    Based on scriptures like Genesis in the Bible. Interpreted and defended by countless theologians throughout history, not attributed to a single modern author.
+                </p>
+            </div>
+        </div>
+        <!-- FAQ Section -->
+        <div class="faq" id="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="question">Q1: Which theory is the most accepted by scientists?</div>
+                <div class="answer">A: The Big Bang theory is currently the most widely accepted explanation among scientists for the origin of the universe.</div>
+            </div>
+            <div class="faq-item">
+                <div class="question">Q2: Could our universe be a computer simulation?</div>
+                <div class="answer">A: There’s no direct evidence, but some philosophers and scientists consider it possible. It remains a subject of active debate and speculation.</div>
+            </div>
+            <div class="faq-item">
+                <div class="question">Q3: What’s the main difference between the Big Bang and Steady State theories?</div>
+                <div class="answer">A: The Big Bang theory suggests a definite starting point and expansion, whereas the Steady State theory argues the universe is eternal and always looks the same.</div>
+            </div>
+            <div class="faq-item">
+                <div class="question">Q4: Does Creationism conflict with scientific theories?</div>
+                <div class="answer">A: Creationism is based on faith and religious beliefs, while scientific theories rely on evidence. Some people see them as compatible, others as separate ways of understanding the universe.</div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        &copy; 2025 Universe Secrets. All rights reserved. Designed by You.
+    </footer>
+    <script>
+        // Typing animation for main heading
+        const text = "Secrets Behind the Creation of the Universe";
+        const typingElem = document.querySelector('.typing');
+        let charIndex = 0;
+        function typeWriter() {
+            if (charIndex < text.length) {
+                typingElem.textContent += text.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 47);
+            }
+        }
+        typingElem.textContent = '';
+        typeWriter();
+
+        // FAQ collapsible answers
+        document.querySelectorAll('.question').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.nextElementSibling;
+                answer.style.display = (answer.style.display === 'none' || !answer.style.display) ? 'block' : 'none';
+            });
+            item.nextElementSibling.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
