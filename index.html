@@ -11,8 +11,52 @@
             --accent: #8fd6ff;
             --text: #e9e9ee;
             --soft: #bacce6;
-            --shadow: 0 8px 32px rgba(18,31,53,0.35);
+            --shadow: 0 8px 32px rgba(18,31,53,0.35);}
+        /* Space background for typing animation */
+        #main-heading {
+            position: relative;
+            background: radial-gradient(ellipse at 60% 40%, #22304a 60%, #171a23 100%);
+            overflow: hidden;
+            border-radius: 18px;
+            box-shadow: 0 4px 32px #00000040;
+            min-height: 110px; /* Increased from 70px */
+            font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif; /* Cool futuristic font */
+            letter-spacing: 2px;
         }
+        #main-heading::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: transparent;
+            z-index: 0;
+        }
+        /* Stars effect */
+        #main-heading::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background-image:
+            radial-gradient(white 1.5px, transparent 2px),
+            radial-gradient(#8fd6ff 1.2px, transparent 1.7px),
+            radial-gradient(#fff7 0.9px, transparent 1.5px);
+            background-size: 120px 120px, 180px 180px, 300px 300px; /* Increased size */
+            background-position: 10px 20px, 60px 40px, 100px 60px;
+            opacity: 0.7;
+            animation: stars-move 16s linear infinite;
+        }
+        @keyframes stars-move {
+            0% { background-position: 10px 20px, 60px 40px, 100px 60px; }
+            100% { background-position: 30px 60px, 80px 100px, 140px 120px; }
+        }
+        .typing {
+            position: relative;
+            z-index: 2;
+            background: transparent;
+            font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif; /* Cool futuristic font */
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             background: var(--bg-main);
@@ -235,7 +279,7 @@
         </div>
         <!-- Theory 4: Creationism -->
         <div class="theory">
-            <img src="./images/space.jpg" alt="Creationism Image">
+            <img src="./images/creo.jpg" alt="Creationism Image">
             <div class="theory-info">
                 <h3>Creationism</h3>
                 <p>
@@ -250,19 +294,31 @@
         <div class="faq" id="faq">
             <h2>Frequently Asked Questions</h2>
             <div class="faq-item">
-                <div class="question">Q1: Which theory is the most accepted by scientists?</div>
+                <div class="question">
+                    Q1: Which theory is the most accepted by scientists?
+                    <button class="toggle-answer" aria-label="Show Answer"></button>
+                </div>
                 <div class="answer">A: The Big Bang theory is currently the most widely accepted explanation among scientists for the origin of the universe.</div>
             </div>
             <div class="faq-item">
-                <div class="question">Q2: Could our universe be a computer simulation?</div>
+                <div class="question">
+                    Q2: Could our universe be a computer simulation?
+                    <button class="toggle-answer" aria-label="Show Answer"></button>
+                </div>
                 <div class="answer">A: There’s no direct evidence, but some philosophers and scientists consider it possible. It remains a subject of active debate and speculation.</div>
             </div>
             <div class="faq-item">
-                <div class="question">Q3: What’s the main difference between the Big Bang and Steady State theories?</div>
+                <div class="question">
+                    Q3: What’s the main difference between the Big Bang and Steady State theories?
+                    <button class="toggle-answer" aria-label="Show Answer"></button>
+                </div>
                 <div class="answer">A: The Big Bang theory suggests a definite starting point and expansion, whereas the Steady State theory argues the universe is eternal and always looks the same.</div>
             </div>
             <div class="faq-item">
-                <div class="question">Q4: Does Creationism conflict with scientific theories?</div>
+                <div class="question">
+                    Q4: Does Creationism conflict with scientific theories?
+                    <button class="toggle-answer" aria-label="Show Answer"></button>
+                </div>
                 <div class="answer">A: Creationism is based on faith and religious beliefs, while scientific theories rely on evidence. Some people see them as compatible, others as separate ways of understanding the universe.</div>
             </div>
         </div>
@@ -270,6 +326,46 @@
     <footer>
         &copy; 2025 Universe Secrets. All rights reserved. Designed by You.
     </footer>
+    <style>
+        .faq-item {
+            position: relative;
+        }
+        .toggle-answer {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: #23263a;
+            color: var(--accent);
+            font-size: 1.5em;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 1px 6px #0002;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .toggle-answer:hover {
+            background: #2a2c40;
+        }
+        .toggle-answer::before {
+            content: '+';
+            font-weight: bold;
+            font-size: 1.3em;
+            transition: transform 0.2s;
+        }
+        .toggle-answer.active::before {
+            content: '−';
+            font-size: 1.3em;
+        }
+        .question {
+            position: relative;
+            padding-right: 44px;
+        }
+    </style>
     <script>
         // Typing animation for main heading
         const text = "Secrets Behind the Creation of the Universe";
@@ -285,14 +381,23 @@
         typingElem.textContent = '';
         typeWriter();
 
-        // FAQ collapsible answers
-        document.querySelectorAll('.question').forEach(item => {
-            item.addEventListener('click', () => {
-                const answer = item.nextElementSibling;
-                answer.style.display = (answer.style.display === 'none' || !answer.style.display) ? 'block' : 'none';
+        // FAQ collapsible answers with icon button in corner
+        document.querySelectorAll('.faq-item').forEach(item => {
+            const btn = item.querySelector('.toggle-answer');
+            const answer = item.querySelector('.answer');
+            answer.style.display = 'none';
+            btn.classList.remove('active');
+            btn.addEventListener('click', () => {
+                if (answer.style.display === 'none') {
+                    answer.style.display = 'block';
+                    btn.classList.add('active');
+                } else {
+                    answer.style.display = 'none';
+                    btn.classList.remove('active');
+                }
             });
-            item.nextElementSibling.style.display = 'block';
         });
     </script>
 </body>
 </html>
+
